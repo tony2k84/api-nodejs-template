@@ -1,0 +1,28 @@
+{
+  "name": "api-nodejs-template",
+  "version": "1.0.0",
+  "description": "api-nodejs-template",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "PINO_LOG_LEVEL=trace nodemon src/index.js | pino-pretty",
+    "start": "NODE_ENV=production node src/index.js",
+    "test": "jest"
+  },
+  "author": "Abhishek Tanwar",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "pino": "^9.2.0",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "pino-pretty": "^11.2.1",
+    "superagent": "^9.0.2",
+    "supertest": "^7.0.0"
+  }
+}
