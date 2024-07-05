@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const logger = require("../common/logger.common").getLogger("db.service");
+const logger = require("../config/logger.config").getLogger("db.service");
 
 const sequelize = new Sequelize("sqlite::memory:", {
   logging: false,

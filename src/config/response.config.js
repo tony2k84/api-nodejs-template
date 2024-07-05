@@ -1,4 +1,4 @@
-const logger = require("./logger.common").getLogger("response.common");
+const logger = require("./logger.config").getLogger("response.common");
 
 function sendResponse(req, res, status, body, code, reason, message) {
   // add headers

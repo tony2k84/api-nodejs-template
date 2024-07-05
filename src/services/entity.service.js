@@ -1,4 +1,4 @@
-const { QUERY_LIMIT, PAGE_OFFSET } = require("../common/config.common");
+const { QUERY_LIMIT, PAGE_OFFSET } = require("../config/constants.config");
 const { Entity } = require("./db.service");
 
 async function getAll({ limit = QUERY_LIMIT, offset = PAGE_OFFSET }) {

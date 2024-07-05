@@ -1,6 +1,6 @@
-const sendResponse = require("../common/response.common");
+const sendResponse = require("../config/response.config");
 const entityService = require("../services/entity.service");
-const logger = require("../common/logger.common").getLogger(
+const logger = require("../config/logger.config").getLogger(
   "entity.controller"
 );
 

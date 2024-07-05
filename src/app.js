@@ -1,14 +1,20 @@
 const express = require("express");
 const compression = require("compression");
 const helmet = require("helmet");
-const entityRoute = require("./routes/entity.route");
-const sendResponse = require("./common/response.common");
+const indexRoute = require("./routes/index.route");
+const sendResponse = require("./config/response.config");
+
+// Passport configuration
+// require("./config/auth.config");
 
 // Create Express server
 const app = express();
 
 // Express configuration
 app.use(express.json());
+
+// Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({ extended: true }));
 
 // Express configuration
 app.use(helmet());
@@ -23,15 +29,12 @@ app.get("/", (req, res) => {
   sendResponse(req, res, 200, { message: "ok" });
 });
 
-app.get("/api/v1/health", (req, res) => {
-  sendResponse(req, res, 200, { message: "ok" });
-});
-
-app.use("/api/v1/entity", entityRoute);
+// mount routes
+app.use(indexRoute);
 
 // custom 404
 app.use((req, res, next) => {
-  sendResponse(req, res, 404, "E0001", "Not found", "Not found");
+  sendResponse(req, res, 404, {}, "E0001", "Not found", "Not found");
   next();
 });
 
@@ -42,6 +45,7 @@ app.use((err, req, res, next) => {
     req,
     res,
     statusCode,
+    {},
     "E0002",
     err.statusCode ? err.message : "Internal Server Error",
     err.message
